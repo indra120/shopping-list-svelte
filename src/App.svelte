@@ -4,6 +4,16 @@
   import AddShoppingItem from "@/lib/AddShoppingItem.svelte"
   import Info from "@/lib/Info.svelte"
   import ShoppingLists from "@/lib/ShoppingLists.svelte"
+  import { onMount, afterUpdate } from "svelte"
+
+  onMount(() => {
+    const savedItems = JSON.parse(localStorage.getItem("shopping-list") || "")
+    if (savedItems) shoppingList.set(savedItems)
+  })
+
+  afterUpdate(() => {
+    localStorage.setItem("shopping-list", JSON.stringify($shoppingList))
+  })
 </script>
 
 <Navbar />

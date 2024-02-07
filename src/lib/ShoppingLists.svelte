@@ -25,27 +25,16 @@
   }
 </script>
 
-<section
-  class="shadow overflow-x-hidden overflow-y-auto rounded-2xl max-h-[640px]"
->
+<section class="shadow overflow-x-hidden overflow-y-auto rounded-2xl max-h-[640px]">
   {#each $shoppingList as item, i (i)}
-    <div
-      class="flex justify-between items-center h-14 py-3 px-4 bg-white text-gray-700 text-base font-semibold {$shoppingList.length ===
-        i + 1 && lastItem}"
-    >
+    <div class="{$shoppingList.length === i + 1 && lastItem} flex justify-between items-center h-14 py-3 px-4 bg-white text-gray-700 text-base font-semibold">
       {item.title}
       <div class="flex items-center justify-between w-32">
-        <div
-          class="flex justify-center items-center w-8 h-6 rounded text-indigo-500 bg-gray-100 shadow-md"
-        >
+        <div class="flex justify-center items-center w-8 h-6 rounded text-indigo-500 bg-gray-100 shadow-md">
           {item.count}
         </div>
 
-        <ActionButton
-          on:click={decrement(i)}
-          icon={minusIcon}
-          alt="minus icon"
-        />
+        <ActionButton on:click={decrement(i)} icon={minusIcon} alt="minus icon" />
         <ActionButton on:click={increment(i)} icon={plusIcon} alt="plus icon" />
       </div>
     </div>
